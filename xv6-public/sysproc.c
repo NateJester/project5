@@ -24,9 +24,21 @@ int sys_clone(void)
 
 int sys_nice(void)
 {
- int inc;
- argint(0, &inc);
- return -1;
+  int inc;
+  argint(0, &inc);
+  return -1;
+}
+
+int macquire(void)
+{
+  mutex* m;
+  argptr(0, &m, sizeof(mutex));
+  
+}
+
+int mrelease(void)
+{
+
 }
 
 int
