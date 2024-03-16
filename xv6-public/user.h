@@ -1,3 +1,4 @@
+#include "mutex.h"
 struct stat;
 struct rtcdate;
 
@@ -42,3 +43,4 @@ void* memset(void*, int, uint);
 void* malloc(uint);
 void free(void*);
 int atoi(const char*);
+void minit(mutex* m);

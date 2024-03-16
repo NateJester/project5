@@ -30,11 +30,11 @@ int sys_nice(void)
   return -1;
 }
 
-int macquire(void)
+void sys_macquire(void)
 {
   mutex* m;
   argptr(0, (void*)&m, sizeof(*m));
-    acquire(&m->lk);
+  acquire(&m->lk);
   while (m->locked) {
     sleep(m, &m->lk);
   }
@@ -43,10 +43,15 @@ int macquire(void)
   release(&m->lk);
 }
 
-int mrelease(void)
+void sys_mrelease(void)
 {
-	mutex *m;
-	argptr(0, (void*)&m, sizeof(*m));
+  mutex *m;
+  argptr(0, (void*)&m, sizeof(*m));
+  acquire(&m->lk);
+  m->locked = 0;
+  m->pid = 0;
+  wakeup(m);
+  release(&m->lk);
 }
 
 int
