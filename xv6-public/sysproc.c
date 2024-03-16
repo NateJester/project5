@@ -22,6 +22,13 @@ int sys_clone(void)
   return clone((void (*)(void*))fn, (void*)stack, (void*)arg);
 }
 
+int sys_nice(void)
+{
+ int inc;
+ argint(0, &inc);
+ return -1;
+}
+
 int
 sys_exit(void)
 {
