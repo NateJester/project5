@@ -38,7 +38,8 @@ int macquire(void)
 
 int mrelease(void)
 {
-
+	mutex *m;
+	argptr(0, (void*)&m, sizeof(*m));
 }
 
 int
