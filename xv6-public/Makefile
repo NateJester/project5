@@ -183,6 +183,7 @@ UPROGS=\
 	_wc\
 	_zombie\
 	_multithread\
+	_test_1\
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)

@@ -37,7 +37,7 @@ void sys_macquire(void)
   acquire(&m->lk);
   while (m->locked) {
     sleep(m, &m->lk);
-  }
+ }
   m->locked = 1;
   m->pid = myproc()->pid;
   release(&m->lk);
@@ -51,7 +51,7 @@ void sys_mrelease(void)
   m->locked = 0;
   m->pid = 0;
   wakeup(m);
-  release(&m->lk);
+ release(&m->lk);
 }
 
 int

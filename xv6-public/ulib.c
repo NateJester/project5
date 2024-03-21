@@ -4,6 +4,11 @@
 #include "user.h"
 #include "x86.h"
 
+void minit(mutex* m) {
+  m->locked = 0;
+  m->pid = 0;
+}
+
 char*
 strcpy(char *s, const char *t)
 {
