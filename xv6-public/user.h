@@ -1,6 +1,6 @@
-#include "mutex.h"
 struct stat;
 struct rtcdate;
+#include "mutex.h"
 
 // system calls
 int fork(void);

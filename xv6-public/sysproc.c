@@ -27,7 +27,15 @@ int sys_nice(void)
 {
   int inc;
   argint(0, &inc);
-  return -1;
+  struct proc *currProc = myproc();
+  currProc->nice += inc;
+  if (currProc->nice > 19) {
+  	currProc->nice = 19;
+  }
+  if (currProc->nice < -20) {
+  	currProc->nice = -20;
+  }
+  return 0;
 }
 
 void sys_macquire(void)
