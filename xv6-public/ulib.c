@@ -4,9 +4,13 @@
 #include "user.h"
 #include "x86.h"
 
-void minit(mutex* m) {
-  m->locked = 0;
-  m->pid = 0;
+
+void
+initlock(struct spinlock *lk, char *name)
+{
+  lk->name = name;
+  lk->locked = 0;
+  lk->cpu = 0;
 }
 
 char*
@@ -110,4 +114,10 @@ memmove(void *vdst, const void *vsrc, int n)
   return vdst;
 }
 
-
+void 
+minit(mutex *m) 
+{
+  initlock(&m->lk, "sleep lock");
+  m->locked = 0;
+  m->pid = 0;
+}

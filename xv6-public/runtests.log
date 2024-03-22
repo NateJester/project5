@@ -8,145 +8,24 @@ build xv6 using make
 **********************************************************************
 Trying to build project using make
 make xv6.img fs.img
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie -fno-pic -O -nostdinc -I. -c bootmain.c
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie -fno-pic -nostdinc -I. -c bootasm.S
-ld -m    elf_i386 -N -e start -Ttext 0x7C00 -o bootblock.o bootasm.o bootmain.o
-objdump -S bootblock.o > bootblock.asm
-objcopy -S -O binary -j .text bootblock.o bootblock
-./sign.pl bootblock
-boot block is 451 bytes (max 510)
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o bio.o bio.c
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o console.o console.c
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o exec.o exec.c
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o file.o file.c
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o fs.o fs.c
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o ide.o ide.c
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o ioapic.o ioapic.c
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o kalloc.o kalloc.c
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o kbd.o kbd.c
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o lapic.o lapic.c
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o log.o log.c
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o main.o main.c
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o mp.o mp.c
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o picirq.o picirq.c
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o pipe.o pipe.c
 gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o proc.o proc.c
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o sleeplock.o sleeplock.c
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o spinlock.o spinlock.c
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o string.o string.c
-gcc -m32 -gdwarf-2 -Wa,-divide   -c -o swtch.o swtch.S
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o syscall.o syscall.c
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o sysfile.o sysfile.c
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o sysproc.o sysproc.c
-gcc -m32 -gdwarf-2 -Wa,-divide   -c -o trapasm.o trapasm.S
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o trap.o trap.c
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o uart.o uart.c
-./vectors.pl > vectors.S
-gcc -m32 -gdwarf-2 -Wa,-divide   -c -o vectors.o vectors.S
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o vm.o vm.c
 gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o grade.o grade.c
-gcc -m32 -gdwarf-2 -Wa,-divide   -c -o entry.o entry.S
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie -fno-pic -nostdinc -I. -c entryother.S
-ld -m    elf_i386 -N -e start -Ttext 0x7000 -o bootblockother.o entryother.o
-objcopy -S -O binary -j .text bootblockother.o entryother
-objdump -S bootblockother.o > entryother.asm
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie -nostdinc -I. -c initcode.S
-ld -m    elf_i386 -N -e start -Ttext 0 -o initcode.out initcode.o
-objcopy -S -O binary initcode.out initcode
-objdump -S initcode.o > initcode.asm
 ld -m    elf_i386 -T kernel.ld -o kernel entry.o bio.o console.o exec.o file.o fs.o ide.o ioapic.o kalloc.o kbd.o lapic.o log.o main.o mp.o picirq.o pipe.o proc.o sleeplock.o spinlock.o string.o swtch.o syscall.o sysfile.o sysproc.o trapasm.o trap.o uart.o vectors.o vm.o grade.o  -b binary initcode entryother
 objdump -S kernel > kernel.asm
 objdump -t kernel | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > kernel.sym
 dd if=/dev/zero of=xv6.img count=10000
 10000+0 records in
 10000+0 records out
-5120000 bytes (5.1 MB, 4.9 MiB) copied, 0.00995775 s, 514 MB/s
+5120000 bytes (5.1 MB, 4.9 MiB) copied, 0.042142 s, 121 MB/s
 dd if=bootblock of=xv6.img conv=notrunc
 1+0 records in
 1+0 records out
-512 bytes copied, 5.1441e-05 s, 10.0 MB/s
+512 bytes copied, 0.000584274 s, 876 kB/s
 dd if=kernel of=xv6.img seek=1 conv=notrunc
-413+1 records in
-413+1 records out
-211624 bytes (212 kB, 207 KiB) copied, 0.000251387 s, 842 MB/s
-gcc -Werror -Wall -o mkfs mkfs.c
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o ulib.o ulib.c
-gcc -m32 -gdwarf-2 -Wa,-divide   -c -o usys.o usys.S
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o printf.o printf.c
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o umalloc.o umalloc.c
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o cat.o cat.c
-ld -m    elf_i386 -N -e main -Ttext 0 -o _cat cat.o ulib.o usys.o printf.o umalloc.o
-objdump -S _cat > cat.asm
-objdump -t _cat | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > cat.sym
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o echo.o echo.c
-ld -m    elf_i386 -N -e main -Ttext 0 -o _echo echo.o ulib.o usys.o printf.o umalloc.o
-objdump -S _echo > echo.asm
-objdump -t _echo | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > echo.sym
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o forktest.o forktest.c
-# forktest has less library code linked in - needs to be small
-# in order to be able to max out the proc table.
-ld -m    elf_i386 -N -e main -Ttext 0 -o _forktest forktest.o ulib.o usys.o
-objdump -S _forktest > forktest.asm
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o grep.o grep.c
-ld -m    elf_i386 -N -e main -Ttext 0 -o _grep grep.o ulib.o usys.o printf.o umalloc.o
-objdump -S _grep > grep.asm
-objdump -t _grep | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > grep.sym
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o init.o init.c
-ld -m    elf_i386 -N -e main -Ttext 0 -o _init init.o ulib.o usys.o printf.o umalloc.o
-objdump -S _init > init.asm
-objdump -t _init | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > init.sym
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o kill.o kill.c
-ld -m    elf_i386 -N -e main -Ttext 0 -o _kill kill.o ulib.o usys.o printf.o umalloc.o
-objdump -S _kill > kill.asm
-objdump -t _kill | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > kill.sym
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o ln.o ln.c
-ld -m    elf_i386 -N -e main -Ttext 0 -o _ln ln.o ulib.o usys.o printf.o umalloc.o
-objdump -S _ln > ln.asm
-objdump -t _ln | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > ln.sym
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o ls.o ls.c
-ld -m    elf_i386 -N -e main -Ttext 0 -o _ls ls.o ulib.o usys.o printf.o umalloc.o
-objdump -S _ls > ls.asm
-objdump -t _ls | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > ls.sym
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o mkdir.o mkdir.c
-ld -m    elf_i386 -N -e main -Ttext 0 -o _mkdir mkdir.o ulib.o usys.o printf.o umalloc.o
-objdump -S _mkdir > mkdir.asm
-objdump -t _mkdir | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > mkdir.sym
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o rm.o rm.c
-ld -m    elf_i386 -N -e main -Ttext 0 -o _rm rm.o ulib.o usys.o printf.o umalloc.o
-objdump -S _rm > rm.asm
-objdump -t _rm | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > rm.sym
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o sh.o sh.c
-ld -m    elf_i386 -N -e main -Ttext 0 -o _sh sh.o ulib.o usys.o printf.o umalloc.o
-objdump -S _sh > sh.asm
-objdump -t _sh | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > sh.sym
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o stressfs.o stressfs.c
-ld -m    elf_i386 -N -e main -Ttext 0 -o _stressfs stressfs.o ulib.o usys.o printf.o umalloc.o
-objdump -S _stressfs > stressfs.asm
-objdump -t _stressfs | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > stressfs.sym
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o usertests.o usertests.c
-ld -m    elf_i386 -N -e main -Ttext 0 -o _usertests usertests.o ulib.o usys.o printf.o umalloc.o
-objdump -S _usertests > usertests.asm
-objdump -t _usertests | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > usertests.sym
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o wc.o wc.c
-ld -m    elf_i386 -N -e main -Ttext 0 -o _wc wc.o ulib.o usys.o printf.o umalloc.o
-objdump -S _wc > wc.asm
-objdump -t _wc | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > wc.sym
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o zombie.o zombie.c
-ld -m    elf_i386 -N -e main -Ttext 0 -o _zombie zombie.o ulib.o usys.o printf.o umalloc.o
-objdump -S _zombie > zombie.asm
-objdump -t _zombie | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > zombie.sym
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o multithread.o multithread.c
-ld -m    elf_i386 -N -e main -Ttext 0 -o _multithread multithread.o ulib.o usys.o printf.o umalloc.o
-objdump -S _multithread > multithread.asm
-objdump -t _multithread | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > multithread.sym
-gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector -fno-pie -no-pie   -c -o test_1.o test_1.c
-ld -m    elf_i386 -N -e main -Ttext 0 -o _test_1 test_1.o ulib.o usys.o printf.o umalloc.o
-objdump -S _test_1 > test_1.asm
-objdump -t _test_1 | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > test_1.sym
-./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _mkdir _rm _sh _stressfs _usertests _wc _zombie _multithread _test_1 
-nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
-balloc: first 724 blocks have been allocated
-balloc: write bitmap block at sector 58
+414+1 records in
+414+1 records out
+212276 bytes (212 kB, 207 KiB) copied, 0.00118434 s, 179 MB/s
+make: 'fs.img' is up to date.
 
 
 test build PASSED
@@ -163,8 +42,8 @@ Lock: Shared increment of counter by fn1 and fn2
 Running xv6 user progam /home/cs537-1/tests/P5/ctests/test_1.c
 Trying to build project using make
 make xv6.img fs.img
-/tmp/tmpir_jt00k/p/Makefile
-/tmp/tmpir_jt00k/p/Makefile.test
+/tmp/tmpotr03_c1/p/Makefile
+/tmp/tmpotr03_c1/p/Makefile.test
 make: 'xv6.img' is up to date.
 make: 'fs.img' is up to date.
 make qemu-nox CPUS=1
@@ -174,7 +53,7 @@ objdump -S _tester > tester.asm
 objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
 ./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _multithread _test_1 
 nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
-balloc: first 757 blocks have been allocated
+balloc: first 770 blocks have been allocated
 balloc: write bitmap block at sector 58
 qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
 c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
@@ -190,7 +69,7 @@ sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap star
 init: starting sh
 $ tester
 tester
-#tester#tester#tester1#tester2#tester20000000
+#tester#tester#tester#tester1#tester2#tester2000000
 
 test test_1 PASSED (1 of 1)
  (Lock: Shared increment of counter by fn1 and fn2)
@@ -206,8 +85,8 @@ Deadlock
 Running xv6 user progam /home/cs537-1/tests/P5/ctests/test_2.c
 Trying to build project using make
 make xv6.img fs.img
-/tmp/tmpir_jt00k/p/Makefile
-/tmp/tmpir_jt00k/p/Makefile.test
+/tmp/tmpotr03_c1/p/Makefile
+/tmp/tmpotr03_c1/p/Makefile.test
 make: 'xv6.img' is up to date.
 make: 'fs.img' is up to date.
 make qemu-nox CPUS=1
@@ -217,7 +96,7 @@ objdump -S _tester > tester.asm
 objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
 ./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _multithread _test_1 
 nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
-balloc: first 759 blocks have been allocated
+balloc: first 772 blocks have been allocated
 balloc: write bitmap block at sector 58
 qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
 c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
@@ -233,9 +112,9 @@ sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap star
 init: starting sh
 $ tester
 tester
-#tester#tester#tester#tester1#tester2#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester1fn1 holds m1
-#tester2fn2 holds m2
-
+#tester#tester#tester1#tester2#tester#tester1#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester1fn1 holds m1
+#tester2fn#tester#tester22 holds m2
+#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester
 
 test test_2 PASSED (1 of 1)
  (Deadlock)
@@ -251,8 +130,8 @@ Lock: fn1, fn2, main all incrementing shared counter
 Running xv6 user progam /home/cs537-1/tests/P5/ctests/test_3.c
 Trying to build project using make
 make xv6.img fs.img
-/tmp/tmpir_jt00k/p/Makefile
-/tmp/tmpir_jt00k/p/Makefile.test
+/tmp/tmpotr03_c1/p/Makefile
+/tmp/tmpotr03_c1/p/Makefile.test
 make: 'xv6.img' is up to date.
 make: 'fs.img' is up to date.
 make qemu-nox CPUS=1
@@ -262,7 +141,7 @@ objdump -S _tester > tester.asm
 objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
 ./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _multithread _test_1 
 nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
-balloc: first 757 blocks have been allocated
+balloc: first 770 blocks have been allocated
 balloc: write bitmap block at sector 58
 qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
 c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
@@ -278,7 +157,7 @@ sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap star
 init: starting sh
 $ tester
 tester
-#tester#tester#tester1#tester2#tester30000000
+#tester#tester#tester1#tester2#tester#tester3000000
 
 test test_3 PASSED (1 of 1)
  (Lock: fn1, fn2, main all incrementing shared counter)
@@ -294,8 +173,8 @@ Scheduler: Priority Order: main > fn1
 Running xv6 user progam /home/cs537-1/tests/P5/ctests/test_4.c
 Trying to build project using make
 make xv6.img fs.img
-/tmp/tmpir_jt00k/p/Makefile
-/tmp/tmpir_jt00k/p/Makefile.test
+/tmp/tmpotr03_c1/p/Makefile
+/tmp/tmpotr03_c1/p/Makefile.test
 make: 'xv6.img' is up to date.
 make: 'fs.img' is up to date.
 make qemu-nox CPUS=1
@@ -305,7 +184,7 @@ objdump -S _tester > tester.asm
 objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
 ./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _multithread _test_1 
 nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
-balloc: first 756 blocks have been allocated
+balloc: first 769 blocks have been allocated
 balloc: write bitmap block at sector 58
 qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
 c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
@@ -321,11 +200,10 @@ sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap star
 init: starting sh
 $ tester
 tester
-#tester#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester$ 
+#tester#tester#tester1#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1
 
-test test_4 FAILED (0 of 1)
+test test_4 PASSED (1 of 1)
  (Scheduler: Priority Order: main > fn1)
- seg fault
 
 starting test_5
 
@@ -338,8 +216,8 @@ Scheduler: Pririty Order: fn1 > main
 Running xv6 user progam /home/cs537-1/tests/P5/ctests/test_5.c
 Trying to build project using make
 make xv6.img fs.img
-/tmp/tmpir_jt00k/p/Makefile
-/tmp/tmpir_jt00k/p/Makefile.test
+/tmp/tmpotr03_c1/p/Makefile
+/tmp/tmpotr03_c1/p/Makefile.test
 make: 'xv6.img' is up to date.
 make: 'fs.img' is up to date.
 make qemu-nox CPUS=1
@@ -349,7 +227,7 @@ objdump -S _tester > tester.asm
 objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
 ./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _multithread _test_1 
 nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
-balloc: first 756 blocks have been allocated
+balloc: first 769 blocks have been allocated
 balloc: write bitmap block at sector 58
 qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
 c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
@@ -365,11 +243,10 @@ sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap star
 init: starting sh
 $ tester
 tester
-#tester#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester$ 
+#tester#tester#tester#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester#tester#tester#tester#tester
 
-test test_5 FAILED (0 of 1)
+test test_5 PASSED (1 of 1)
  (Scheduler: Pririty Order: fn1 > main)
- seg fault
 
 starting test_6
 
@@ -382,8 +259,8 @@ Scheduler: Pririty Order: main > fn1
 Running xv6 user progam /home/cs537-1/tests/P5/ctests/test_6.c
 Trying to build project using make
 make xv6.img fs.img
-/tmp/tmpir_jt00k/p/Makefile
-/tmp/tmpir_jt00k/p/Makefile.test
+/tmp/tmpotr03_c1/p/Makefile
+/tmp/tmpotr03_c1/p/Makefile.test
 make: 'xv6.img' is up to date.
 make: 'fs.img' is up to date.
 make qemu-nox CPUS=1
@@ -393,7 +270,7 @@ objdump -S _tester > tester.asm
 objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
 ./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _multithread _test_1 
 nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
-balloc: first 756 blocks have been allocated
+balloc: first 769 blocks have been allocated
 balloc: write bitmap block at sector 58
 qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
 c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
@@ -409,11 +286,10 @@ sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap star
 init: starting sh
 $ tester
 tester
-#tester#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester$ 
+#tester#tester#tester1#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester1#tester1#tester1#tester1#tester1#tester1#tester
 
-test test_6 FAILED (0 of 1)
+test test_6 PASSED (1 of 1)
  (Scheduler: Pririty Order: main > fn1)
- seg fault
 
 starting test_7
 
@@ -426,8 +302,8 @@ Scheduler: Priority order: fn2 > main > fn1
 Running xv6 user progam /home/cs537-1/tests/P5/ctests/test_7.c
 Trying to build project using make
 make xv6.img fs.img
-/tmp/tmpir_jt00k/p/Makefile
-/tmp/tmpir_jt00k/p/Makefile.test
+/tmp/tmpotr03_c1/p/Makefile
+/tmp/tmpotr03_c1/p/Makefile.test
 make: 'xv6.img' is up to date.
 make: 'fs.img' is up to date.
 make qemu-nox CPUS=1
@@ -437,7 +313,7 @@ objdump -S _tester > tester.asm
 objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
 ./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _multithread _test_1 
 nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
-balloc: first 757 blocks have been allocated
+balloc: first 770 blocks have been allocated
 balloc: write bitmap block at sector 58
 qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
 c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
@@ -453,11 +329,10 @@ sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap star
 init: starting sh
 $ tester
 tester
-#tester#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester1#tester2#tester$ 
+#tester#tester#tester1#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tes
 
-test test_7 FAILED (0 of 1)
+test test_7 PASSED (1 of 1)
  (Scheduler: Priority order: fn2 > main > fn1)
- seg fault
 
 starting test_8
 
@@ -470,8 +345,8 @@ Scheduler: Priority Order: fn2 > fn1 > main
 Running xv6 user progam /home/cs537-1/tests/P5/ctests/test_8.c
 Trying to build project using make
 make xv6.img fs.img
-/tmp/tmpir_jt00k/p/Makefile
-/tmp/tmpir_jt00k/p/Makefile.test
+/tmp/tmpotr03_c1/p/Makefile
+/tmp/tmpotr03_c1/p/Makefile.test
 make: 'xv6.img' is up to date.
 make: 'fs.img' is up to date.
 make qemu-nox CPUS=1
@@ -481,7 +356,7 @@ objdump -S _tester > tester.asm
 objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
 ./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _multithread _test_1 
 nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
-balloc: first 757 blocks have been allocated
+balloc: first 770 blocks have been allocated
 balloc: write bitmap block at sector 58
 qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
 c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
@@ -497,11 +372,10 @@ sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap star
 init: starting sh
 $ tester
 tester
-#tester#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester$ 
+#tester#tester#tester1#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester#tester#tester#tester#tester#tester#tester#tester#tester#te
 
-test test_8 FAILED (0 of 1)
+test test_8 PASSED (1 of 1)
  (Scheduler: Priority Order: fn2 > fn1 > main)
- seg fault
 
 starting test_9
 
@@ -514,8 +388,8 @@ Scheduler: fn1 thread priority > main thread
 Running xv6 user progam /home/cs537-1/tests/P5/ctests/test_9.c
 Trying to build project using make
 make xv6.img fs.img
-/tmp/tmpir_jt00k/p/Makefile
-/tmp/tmpir_jt00k/p/Makefile.test
+/tmp/tmpotr03_c1/p/Makefile
+/tmp/tmpotr03_c1/p/Makefile.test
 make: 'xv6.img' is up to date.
 make: 'fs.img' is up to date.
 make qemu-nox CPUS=1
@@ -525,7 +399,7 @@ objdump -S _tester > tester.asm
 objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
 ./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _multithread _test_1 
 nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
-balloc: first 756 blocks have been allocated
+balloc: first 769 blocks have been allocated
 balloc: write bitmap block at sector 58
 qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
 c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
@@ -541,11 +415,10 @@ sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap star
 init: starting sh
 $ tester
 tester
-#tester#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester1#tester1#tester$ 
+#tester#tester#tester#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester#tester#tester#tester#tester
 
-test test_9 FAILED (0 of 1)
+test test_9 PASSED (1 of 1)
  (Scheduler: fn1 thread priority > main thread)
- seg fault
 
 starting test_10
 
@@ -558,8 +431,8 @@ Priority inheritance
 Running xv6 user progam /home/cs537-1/tests/P5/ctests/test_10.c
 Trying to build project using make
 make xv6.img fs.img
-/tmp/tmpir_jt00k/p/Makefile
-/tmp/tmpir_jt00k/p/Makefile.test
+/tmp/tmpotr03_c1/p/Makefile
+/tmp/tmpotr03_c1/p/Makefile.test
 make: 'xv6.img' is up to date.
 make: 'fs.img' is up to date.
 make qemu-nox CPUS=1
@@ -569,7 +442,7 @@ objdump -S _tester > tester.asm
 objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
 ./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _multithread _test_1 
 nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
-balloc: first 758 blocks have been allocated
+balloc: first 771 blocks have been allocated
 balloc: write bitmap block at sector 58
 qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
 c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
@@ -585,7 +458,7 @@ sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap star
 init: starting sh
 $ tester
 tester
-#tester#tester#tester1#tester2#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#te
+#tester#tester#tester1#tester2#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester2#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester#tester#tester#tester#tester#tester#
 
 test test_10 PASSED (1 of 1)
  (Priority inheritance)
@@ -601,8 +474,8 @@ Priority Restoration
 Running xv6 user progam /home/cs537-1/tests/P5/ctests/test_11.c
 Trying to build project using make
 make xv6.img fs.img
-/tmp/tmpir_jt00k/p/Makefile
-/tmp/tmpir_jt00k/p/Makefile.test
+/tmp/tmpotr03_c1/p/Makefile
+/tmp/tmpotr03_c1/p/Makefile.test
 make: 'xv6.img' is up to date.
 make: 'fs.img' is up to date.
 make qemu-nox CPUS=1
@@ -612,7 +485,7 @@ objdump -S _tester > tester.asm
 objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
 ./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _multithread _test_1 
 nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
-balloc: first 758 blocks have been allocated
+balloc: first 771 blocks have been allocated
 balloc: write bitmap block at sector 58
 qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
 c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
@@ -628,7 +501,7 @@ sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap star
 init: starting sh
 $ tester
 tester
-#tester#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester1#tester2#tester#tester1#tester1#tester$ 
+#tester#tester#tester#tester1#tester2#tester#tester2#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester$ 
 
 test test_11 FAILED (0 of 1)
  (Priority Restoration)
@@ -645,8 +518,8 @@ Multiple contention
 Running xv6 user progam /home/cs537-1/tests/P5/ctests/test_12.c
 Trying to build project using make
 make xv6.img fs.img
-/tmp/tmpir_jt00k/p/Makefile
-/tmp/tmpir_jt00k/p/Makefile.test
+/tmp/tmpotr03_c1/p/Makefile
+/tmp/tmpotr03_c1/p/Makefile.test
 make: 'xv6.img' is up to date.
 make: 'fs.img' is up to date.
 make qemu-nox CPUS=1
@@ -656,7 +529,7 @@ objdump -S _tester > tester.asm
 objdump -t _tester | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > tester.sym
 ./mkfs fs.img README _cat _echo _forktest _grep _init _kill _ln _ls _tester _mkdir _rm _sh _stressfs _usertests _wc _zombie _multithread _test_1 
 nmeta 59 (boot, super, log blocks 30 inode blocks 26, bitmap blocks 1) blocks 941 total 1000
-balloc: first 759 blocks have been allocated
+balloc: first 772 blocks have been allocated
 balloc: write bitmap block at sector 58
 qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512 
 c[?7l[2J[0mSeaBIOS (version 1.15.0-1)
@@ -672,7 +545,7 @@ sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap star
 init: starting sh
 $ tester
 tester
-#tester#tester#tester1#tester2#tester3#tester1#tester2#tester#tester3#tester#tester3#tester#tester3#tester#tester3#tester#tester3#tester#tester3#tester#tester3#tester#tester3#tester#tester3#tester#tester3#tester#tester3#tester#tester1#tester2#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester#tester1#tester2#tester#tester2#tester#tester2#tester#tester2#tester#tester2#tester#tester2#tester#tester2#tester#tester2#tester#tester2#tester#tester2#tester#tester2#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester$ 
+#tester#tester#tester#tester1#tester2#tester3#tester1#tester2#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester#tester3#tester3#tester3#tester3#tester3#tester3#tester3#tester3#tester3#tester3#tester3#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester1#tester#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester2#tester$ 
 
 test test_12 FAILED (0 of 1)
  (Multiple contention)
@@ -692,29 +565,23 @@ test test_2 PASSED (1 of 1)
 test test_3 PASSED (1 of 1)
  (Lock: fn1, fn2, main all incrementing shared counter)
 
-test test_4 FAILED (0 of 1)
+test test_4 PASSED (1 of 1)
  (Scheduler: Priority Order: main > fn1)
- seg fault
 
-test test_5 FAILED (0 of 1)
+test test_5 PASSED (1 of 1)
  (Scheduler: Pririty Order: fn1 > main)
- seg fault
 
-test test_6 FAILED (0 of 1)
+test test_6 PASSED (1 of 1)
  (Scheduler: Pririty Order: main > fn1)
- seg fault
 
-test test_7 FAILED (0 of 1)
+test test_7 PASSED (1 of 1)
  (Scheduler: Priority order: fn2 > main > fn1)
- seg fault
 
-test test_8 FAILED (0 of 1)
+test test_8 PASSED (1 of 1)
  (Scheduler: Priority Order: fn2 > fn1 > main)
- seg fault
 
-test test_9 FAILED (0 of 1)
+test test_9 PASSED (1 of 1)
  (Scheduler: fn1 thread priority > main thread)
- seg fault
 
 test test_10 PASSED (1 of 1)
  (Priority inheritance)
@@ -727,6 +594,6 @@ test test_12 FAILED (0 of 1)
  (Multiple contention)
  seg fault
 
-Passed 5 of 13 tests.
-Overall 5 of 13
-Points 4 of 12
+Passed 11 of 13 tests.
+Overall 11 of 13
+Points 10 of 12

@@ -29,10 +29,15 @@ int sys_nice(void)
   if (argint(0, &inc) < 0) {
   	return -1;
   }
-  int newVal = myproc()->priority + inc;
-  if (newVal < -20) newVal = -20;
-  if (newVal > 19) newVal = 19;
-  myproc()->priority = newVal;
+  argint(0, &inc);
+  struct proc *currProc = myproc();
+  currProc->nice += inc;
+  if (currProc->nice > 19) {
+  	currProc->nice = 19;
+  }
+  if (currProc->nice < -20) {
+  	currProc->nice = -20;
+  }
   return 0;
 }
 
