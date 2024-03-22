@@ -26,8 +26,14 @@ int sys_clone(void)
 int sys_nice(void)
 {
   int inc;
-  argint(0, &inc);
-  return -1;
+  if (argint(0, &inc) < 0) {
+  	return -1;
+  }
+  int newVal = myproc()->priority + inc;
+  if (newVal < -20) newVal = -20;
+  if (newVal > 19) newVal = 19;
+  myproc()->priority = newVal;
+  return 0;
 }
 
 void sys_macquire(void)
