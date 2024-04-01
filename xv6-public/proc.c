@@ -116,7 +116,10 @@ found:
   p->context = (struct context*)sp;
   memset(p->context, 0, sizeof *p->context);
   p->context->eip = (uint)forkret;
+  
   p->nice = 0;
+  p->numLocksHeld = 0;
+  p->isWaiting = 0;
   
   return p;
 }
@@ -407,17 +410,31 @@ scheduler(void)
     for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
       if(p->state != RUNNABLE) {
         	continue;
-        }
+        } 
         
         highestPriority = p;
+        int lowestNice = p->nice;
+        
         for (pp = ptable.proc; pp < &ptable.proc[NPROC]; pp++) {
-        	if (pp->state != RUNNABLE) {
+        	if (pp->state != RUNNABLE && pp->isWaiting == 0) {
         		continue;
-        	}
-        	if (pp->nice < highestPriority->nice) {
+        	// if the process pp is waiting and has a lower nice value than current lowest, check
+        	} else if (pp->isWaiting == 1 && pp->nice < lowestNice) {
+        		// loop through all locks held by process p
+        		for (int i = 0; i < p->numLocksHeld; i++) {
+        			// if the lock held by p matches the one pp is waiting on, update lowest nice
+        			if (p->locks_held[i] == pp->wait_lock) {
+        				lowestNice = pp->nice;
+        			}
+        		}
+        	// if process pp has lower nice value than current lowest, make pp the highest priority process
+        	} else if (pp->state == RUNNABLE && pp->nice < lowestNice) {
+        		lowestNice = pp->nice;
         		highestPriority = pp;
         	}
-        }   
+        } 
+
+        // run the highest priority process  
         p = highestPriority;
         
 		c->proc = p;
@@ -430,6 +447,7 @@ scheduler(void)
     	// Process is done running for now.
     	// It should have changed its p->state before coming back.
     	c->proc = 0;
+    
 		}
     release(&ptable.lock);
 

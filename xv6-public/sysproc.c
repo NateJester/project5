@@ -47,8 +47,13 @@ void sys_macquire(void)
   argptr(0, (void*)&m, sizeof(*m));
   acquire(&m->lk);
   while (m->locked) {
+    myproc()->isWaiting = 1;
+    myproc()->wait_lock = m;
     sleep(m, &m->lk);
  }
+  myproc()->isWaiting = 0;
+  myproc()->locks_held[myproc()->numLocksHeld] = m;
+  myproc()->numLocksHeld++;
   m->locked = 1;
   m->pid = myproc()->pid;
   release(&m->lk);
@@ -59,6 +64,7 @@ void sys_mrelease(void)
   mutex *m;
   argptr(0, (void*)&m, sizeof(*m));
   acquire(&m->lk);
+  myproc()->numLocksHeld--;
   m->locked = 0;
   m->pid = 0;
   wakeup(m);
